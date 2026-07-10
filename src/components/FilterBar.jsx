@@ -18,14 +18,17 @@ function FilterBar({ filter, onFilterChange }) {
   const t = getTokens(mode)
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 1.5, mb: 2 }}>
-      <Typography sx={{ color: t.textPrimary, fontWeight: 700, lineHeight: 1, height: '36px', display: 'flex', alignItems: 'center', m: 0 }}>Filter by</Typography>
+    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'stretch', sm: 'center' }, justifyContent: 'space-between', gap: 1.5, mb: 2, width: '100%' }}>
+      <Typography sx={{ color: t.textPrimary, fontWeight: 700, lineHeight: 1.2, display: 'flex', alignItems: 'center', m: 0 }}>
+        Filter by
+      </Typography>
 
       <Box
         onClick={(e) => setAnchorEl(e.currentTarget)}
         sx={{
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           gap: 1,
           border: `1px solid ${t.borderAccent}`,
           borderRadius: 0,
@@ -37,6 +40,7 @@ function FilterBar({ filter, onFilterChange }) {
           fontSize: 14,
           cursor: 'pointer',
           userSelect: 'none',
+          width: { xs: '100%', sm: 'auto' },
         }}
       >
         {FILTER_LABELS[filter]}

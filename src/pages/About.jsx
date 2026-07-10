@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TypewriterTitle from "../components/TypewriterTitle";
 import { useThemeMode } from "../context/ThemeModeContext.jsx";
+import { getTokens } from "../theme/tokens.js";
 
 const tracker_team = [
   {
@@ -95,94 +96,87 @@ function Photo_profil() {
 
 function Information({ person, theme }) {
   const estSombre = theme === "dark";
+  const t = getTokens(theme);
   return (
     <div
-      className={
-        "w-full md:h-full mx-auto min-h-[30] border rounded-4xl overflow-hidden font-sans flex [clip-path:inset(0_round_1.5rem)] " +
-        (estSombre
-          ? "bg-[#050A24] border-[#ACACAC]"
-          : "bg-white border-gray-300")
-      }
+      className="w-full mx-auto max-w-3xl border rounded-[1.5rem] overflow-hidden font-sans flex flex-col md:flex-row shadow-sm min-h-0"
+      style={{
+        backgroundColor: t.cardBg,
+        borderColor: estSombre ? '#ACACAC' : '#C8DAF1',
+      }}
     >
       <div
         className={
-          "w-[40%] shrink-0 rounded-4xl flex items-center justify-center " +
-          (estSombre ? "bg-[#1a2338]" : "bg-gray-100")
+          "w-full md:w-5/12 h-44 sm:h-52 aspect-[4/3] md:h-auto md:aspect-auto flex items-center justify-center overflow-hidden " +
+          (estSombre ? "bg-[#1a2338]" : "bg-[#E8EFFB]")
         }
       >
         {person.photo ? (
           <img
             src={person.photo}
             alt={`${person.nom} ${person.prenom}`}
-            className="w-full h-full object-cover "
+            className="w-full h-full object-cover"
           />
         ) : (
           <Photo_profil />
         )}
       </div>
 
-      <div className="px-5 py-10 flex flex-col items-start justify-center text-left">
-        <h3
-          className={
-            "text-[3svh] leading-none whitespace- " +
-            (estSombre ? "text-white" : "text-[#050A24]")
-          }
-        >
-          {person.nom}
-        </h3>
-        <h3
-          className={
-            "font-sans text-[3svh] leading-none mt-[1.5svh] mb-[2svh] whitespace-nowrap " +
-            (estSombre ? "text-white" : "text-[#050A24]")
-          }
-        >
-          {person.prenom}
-        </h3>
+      <div className="w-full md:w-7/12 px-5 py-8 md:px-8 md:py-10 flex flex-col gap-4">
+        <div>
+          <h3
+            className={
+              "text-2xl md:text-3xl font-bold leading-tight " +
+              (estSombre ? "text-white" : "text-[#050A24]")
+            }
+          >
+            {person.nom}
+          </h3>
+          <h3
+            className={
+              "font-sans text-xl md:text-2xl mt-2 leading-tight " +
+              (estSombre ? "text-white" : "text-[#050A24]")
+            }
+          >
+            {person.prenom}
+          </h3>
+        </div>
 
         <p
           className={
-            "mb-[3svh] text-base whitespace-nowrap " +
-            (estSombre ? "text-white" : "text-[#050A24]")
+            "text-sm md:text-base " +
+            (estSombre ? "text-gray-300" : "text-[#050A24]")
           }
         >
           IM&nbsp;: {person.im}
         </p>
 
-        <div className="grid grid-cols-[auto_auto] gap-x-3 gap-y-2 pl-3 text-center items-center w-fit max-w-full">
-          <Icon_gmail />
-          <div
-            className={
-              "border rounded-full px-3 py-1 text-[1.8svh] whitespace-nowrap " +
-              (estSombre
-                ? "bg-[#050A24] border-[#ACACAC] text-gray-200"
-                : "bg-white border-gray-300 text-gray-700")
-            }
-          >
-            {person.email}
+        <div className="grid grid-cols-1 gap-3 w-full">
+          <div className="flex items-start gap-3 w-full rounded-[1rem] border px-3 py-3 text-sm" style={{
+              backgroundColor: estSombre ? '#050A24' : '#EEF3FA',
+              borderColor: estSombre ? '#ACACAC' : '#C8DAF1',
+              color: estSombre ? '#E5E7EB' : '#050A24',
+            }}>
+            <Icon_gmail />
+            <span className="w-full min-w-0 break-words text-left">{person.email}</span>
           </div>
 
-          <Icon_whatsapp />
-          <div
-            className={
-              "border rounded-full px-3 py-1 text-[1.8svh] tracking-wider whitespace-nowrap " +
-              (estSombre
-                ? "bg-[#050A24] border-[#ACACAC] text-gray-200"
-                : "bg-white border-gray-300 text-gray-700")
-            }
-          >
-            {person.numero_telephone}
+          <div className="flex items-start gap-3 w-full rounded-[1rem] border px-3 py-3 text-sm" style={{
+              backgroundColor: estSombre ? '#050A24' : '#EEF3FA',
+              borderColor: estSombre ? '#ACACAC' : '#C8DAF1',
+              color: estSombre ? '#E5E7EB' : '#050A24',
+            }}>
+            <Icon_whatsapp />
+            <span className="w-full min-w-0 break-words text-left">{person.numero_telephone}</span>
           </div>
 
-          <Icon_linkdin />
-          <div
-            className={
-              "border rounded-full px-3 py-1 text-[1.8svh] whitespace-nowrap " +
-              (estSombre
-                ? "bg-[#050A24] border-[#ACACAC] text-gray-200"
-                : "bg-white border-gray-300 text-gray-700")
-            }
-          >
-            {person.signature}
+          <div className="flex items-start gap-3 w-full rounded-[1rem] border px-3 py-3 text-sm" style={{
+              backgroundColor: estSombre ? '#050A24' : '#EEF3FA',
+              borderColor: estSombre ? '#ACACAC' : '#C8DAF1',
+              color: estSombre ? '#E5E7EB' : '#050A24',
+            }}>
+            <Icon_linkdin />
+            <span className="w-full min-w-0 break-words text-left">{person.signature}</span>
           </div>
         </div>
       </div>
@@ -215,8 +209,8 @@ function EmpilementCarte({ personne, theme }) {
 
   return (
     <div
-      className="relative mx-auto w-full"
-      style={{ perspective: "2200px", minHeight: "340px" }}
+      className="relative mx-auto w-full min-h-[520px] lg:min-h-[420px]"
+      style={{ perspective: "2200px" }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -265,33 +259,30 @@ function EmpilementCarte({ personne, theme }) {
 
 export default function App() {
   const { mode } = useThemeMode();
+  const t = getTokens(mode);
   const estSombre = mode === "dark";
 
   return (
     <div
       className={
         "min-h-screen flex flex-col transition-colors duration-300 " +
-        (estSombre ? "bg-[#050A24] text-white" : "text-[#050A24]")
+        (estSombre ? "text-white" : "text-[#050A24]")
       }
-      style={
-        !estSombre
-          ? { backgroundColor: "white" }
-          : {}
-      }
+      style={{ backgroundColor: t.pageBg }}
     >
       <div className="flex-1 w-full">
-        <main className="max-w-5xl mx-auto px-10 py-14">
-          <div className="mt-10 w-full max-w-[1200px]">
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-8 sm:py-10 md:py-12">
+          <div className="mt-6 sm:mt-8 w-full">
             <TypewriterTitle />
           </div>
 
           <section className="mb-8">
-            <h2 className="font-semibold text-[3.5svh] mb-3">
+            <h2 className="font-semibold text-2xl sm:text-3xl mb-3">
               What is SERVICE MANAGER?
             </h2>
             <p
               className={
-                "text-[2.2svh] leading-relaxed mb-4 " +
+                "text-base sm:text-lg leading-relaxed mb-4 " +
                 (estSombre ? "text-gray-300" : "text-gray-600")
               }
             >
@@ -306,7 +297,7 @@ export default function App() {
             </p>
             <p
               className={
-                "text-[2.2svh] leading-relaxed " +
+                "text-base sm:text-lg leading-relaxed " +
                 (estSombre ? "text-gray-300" : "text-gray-600")
               }
             >
@@ -319,10 +310,10 @@ export default function App() {
           </section>
 
           <section className="mb-12">
-            <h2 className="font-bold text-[3.5svh] mb-3">Who are us?</h2>
+            <h2 className="font-bold text-2xl md:text-3xl mb-3">Who are us?</h2>
             <p
               className={
-                "text-[2.2svh] leading-relaxed " +
+                "text-base md:text-lg leading-relaxed " +
                 (estSombre ? "text-gray-300" : "text-gray-600")
               }
             >

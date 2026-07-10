@@ -11,8 +11,8 @@ function StatCard({ label, value, accentColor, onClick, isActive }) {
       onClick={onClick}
       sx={{
         width: { xs: '100%', md: '228px' },
-        maxWidth: '228px',
-        height: '58px',
+        maxWidth: { xs: '100%', md: '228px' },
+        height: { xs: 'auto', md: '58px' },
         flexShrink: 1,
         background: t.gradient,
         border: `1px solid ${accentColor}`,
@@ -20,18 +20,20 @@ function StatCard({ label, value, accentColor, onClick, isActive }) {
         borderRadius: '10px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         gap: 1,
         px: 2,
+        py: { xs: 2, md: 0 },
         overflow: 'hidden',
         cursor: 'pointer',
         transition: 'box-shadow 0.2s ease',
+        flexDirection: { xs: 'column', md: 'row' },
       }}
     >
-      <Typography noWrap sx={{ fontSize: 16, fontWeight: 700, color: t.textPrimary }}>
+      <Typography sx={{ fontSize: { xs: 14, md: 16 }, fontWeight: 700, color: t.textPrimary, textAlign: { xs: 'center', md: 'left' } }}>
         {label}
       </Typography>
-      <Typography sx={{ fontSize: 32, fontWeight: 700, color: accentColor, lineHeight: 1, flexShrink: 0 }}>
+      <Typography sx={{ fontSize: { xs: 28, md: 32 }, fontWeight: 700, color: accentColor, lineHeight: 1, flexShrink: 0 }}>
         {value}
       </Typography>
     </Box>

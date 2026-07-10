@@ -2,6 +2,7 @@ import { useState } from "react";
 import { DEFAULT_USERNAME,DEFAULT_PASSWORD } from "./Login";
 import Login from "./Login";
 import { useThemeMode } from "../context/ThemeModeContext.jsx";
+import { getTokens } from "../theme/tokens.js";
 
 import {
     AccountCard,
@@ -24,7 +25,8 @@ const STORAGE_KEY = "service-manager-account";
 
 function ManageAccount() {
 
-  const { isDark } = useThemeMode();
+  const { mode, isDark } = useThemeMode();
+  const t = getTokens(mode);
 
   const [savedAccount, setSavedAccount] = useState(() => {
 
@@ -230,17 +232,17 @@ function ManageAccount() {
   return (
 
       <div
-        className="min-h-screen transition-colors duration-300"
+        className="min-h-screen transition-colors duration-300 px-4 py-8 sm:px-6"
         style={{
-          backgroundColor: isDark ? 'transparent' : 'white',
+          backgroundColor: t.pageBg,
         }}
       >
         <ReturnButton onClick={() => {}} />
 
-        <div className="flex justify-center pt-[170px]">
+        <div className="flex justify-center pt-24 sm:pt-[170px]">
           <AccountCard>
 
-            <div className="pt-[45px] pl-[54px]">
+            <div className="pt-11 px-4 pb-10 sm:px-14">
             
               <AccountHeader />
 

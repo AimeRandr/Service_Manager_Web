@@ -3,6 +3,7 @@ import { useState } from "react";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { useThemeMode } from '../../context/ThemeModeContext.jsx'
+import { getTokens } from '../../theme/tokens.js'
 
 function AccountInput({
     label,
@@ -15,12 +16,13 @@ function AccountInput({
 }) {
 
     const [showPassword, setShowPassword] = useState(false);
-    const { isDark } = useThemeMode();
+    const { mode, isDark } = useThemeMode();
+    const t = getTokens(mode)
 
     const isPassword = type == "password";
 
     return (
-        <div style={{ width }}>
+        <div className="w-full" style={{ maxWidth: width }}>
 
             <label 
                 className={
@@ -42,8 +44,9 @@ function AccountInput({
                     placeholder={placeholder}
                     className={
                         "w-full h-12 rounded-[20px] border border-[#0C8CE9] pl-10 pr-12 text-[16px] font-roboto-slab outline-none transition-colors duration-300 " +
-                        (isDark ? "bg-[#050A24] text-white" : "bg-[#F0F4F8] text-[#050A24]")
+                        (isDark ? "text-white" : "text-[#050A24]")
                     }
+                    style={{ backgroundColor: t.inputBg }}
                 />
                 {
                     isPassword ? (

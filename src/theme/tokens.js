@@ -13,15 +13,15 @@ export function getTokens(mode) {
     // Fonds en dégradé (Navbar, Footer, StatsSummary, StatCard)
     gradient: isDark
       ? 'linear-gradient(90deg, #050A24 0%, #0F1D5A 50%, #050A24 100%)'
-      : 'linear-gradient(90deg, #E8F0FF 0%, #F7FAFF 50%, #E8F0FF 100%)',
+      : 'linear-gradient(90deg, #DCEEFF 0%, #F8FDFC 50%, #E8F2FF 100%)',
 
     // Fond de page général
-    pageBg: isDark ? '#050A24' : '#F4F6FB',
+    pageBg: isDark ? '#050A24' : '#E2E9F4',
 
     // Fond des cartes (ServiceCard, AccountCard)
-    // En mode clair, on utilise un gris très clair pour bien distinguer les cartes du fond blanc
-    cardBg: isDark ? '#2b3550' : '#F0F4F8',
-    cardBorder: isDark ? 'transparent' : '#E2E8F0',
+    // En mode clair, on utilise une surface douce et légèrement plus sombre
+    cardBg: isDark ? '#2b3550' : '#EEF3FA',
+    cardBorder: isDark ? 'transparent' : '#C8DAF1',
 
     // Fond des menus déroulants / dialogues
     menuBg: isDark ? '#0F1730' : '#FFFFFF',

@@ -4,5 +4,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-
+  base: 'https://aimerandr.github.io/Service_Manager_Web/',
 })

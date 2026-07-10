@@ -10,10 +10,14 @@ function FormsActions({ onSave, onDiscard }) {
     <div className="
         mt-10
         flex
-        justify-end
-        mr-8
+        flex-col
         gap-4
-        pr-[18px]
+        items-stretch
+        sm:flex-row
+        sm:justify-end
+        sm:items-center
+        sm:mr-8
+        sm:pr-[18px]
       "
     >
 
@@ -21,8 +25,8 @@ function FormsActions({ onSave, onDiscard }) {
       variant="outlined"
       onClick={onDiscard}
       sx={{
-        width: 96,
-        height: 30,
+        width: { xs: '100%', sm: 96 },
+        height: 40,
 
         borderRadius: "20px",
         borderColor: t.textPrimary,
@@ -51,8 +55,8 @@ function FormsActions({ onSave, onDiscard }) {
       disableElevation
       onClick={onSave}
       sx={{
-          width: 92,
-          height: 30,
+          width: { xs: '100%', sm: 92 },
+          height: 40,
 
           borderRadius: "20px",
           border: `1px solid ${t.textPrimary}`,
